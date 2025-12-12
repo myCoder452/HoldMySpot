@@ -1,126 +1,155 @@
-# HoldMySpot
+# 📞 Hold My Spot
+> **Your AI-Powered Assistant for Waiting on Hold**
 
-**HoldMySpot** is an advanced AI-powered platform designed to reclaim your time. By leveraging agentic AI, we navigate complex phone trees, wait on hold, and negotiate with service providers on your behalf.
-
-## 🚀 Mission
-
-Our mission is simple: **Never Wait on Hold Again.**
-We empower users by handling the frustration of day-to-day bureaucracy—dealing with utility companies, airlines, healthcare providers, and more—so you can focus on what truly matters.
-
-## 🛠 Technology Stack
-
-HoldMySpot is built with a modern, scalable, and secure stack, ensuring a seamless experience across web and mobile.
-
-### Frontend (Web)
-- **Framework**: React (Vite)
-- **Styling**: Tailwind CSS (Custom "Elite" Design System)
-- **Icons**: Lucide React
-- **Routing**: React Router
-- **State Management**: React Context API
-
-### Mobile App (Web & Native)
-- **Framework**: React Native (Expo)
-- **Styling**: NativeWind (Tailwind CSS for Mobile)
-- **Navigation**: React Navigation (Stack & Bottom Tabs)
-- **Platform**: iOS, Android, and Web (PWA)
-
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Language**: TypeScript
-- **Security**: 
-  - **bcryptjs**: Secure password hashing.
-  - **Multi-Layer Encryption**: Custom double-layer AES-256 encryption for sensitive data.
-- **API**: RESTful architecture
-
-### AI & Infrastructure
-- **Voice Synthesis**: ElevenLabs (Ultra-realistic Text-to-Speech)
-- **Telephony**: Vultr (High-performance Call Dispatching)
-- **Storage**: Raindrop SmartMemory (Secure Verification Vault)
-
-## ✨ Features
-
-1.  **Instant Dispatch**: Launch an AI agent to handle calls immediately from the Web or Mobile App.
-2.  **Real-Time Dashboard**: Track the status of your calls (Queued, On Hold, Connected, Completed).
-3.  **Secure Verification Vault**: Store sensitive information (DOB, SSN, Mother's Maiden Name) securely. This data is encrypted with multiple layers of protection and only decrypted when the agent needs it to verify your identity.
-4.  **Cross-Platform Experience**: 
-    - **Web App**: Full-featured desktop experience.
-    - **Mobile App**: Optimized for touch, with a dedicated "Web App" mode for browser access.
-5.  **Bank-Grade Security**: 
-    - All passwords are hashed.
-    - Personal data is encrypted at rest using a multi-layer encryption strategy.
-
-## 📦 Installation & Setup
-
-### Prerequisites
-- Node.js (v18+)
-- npm
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/hold-my-spot.git
-cd hold-my-spot
-```
-
-### 2. Install Dependencies
-We use a unified build system. You can install dependencies for all components from the root:
-
-```bash
-# Install root dependencies
-npm install
-
-# Install Frontend dependencies
-cd frontend && npm install
-
-# Install Backend dependencies
-cd ../backend && npm install
-
-# Install Mobile App dependencies
-cd ../mobile-app && npm install
-```
-
-### 3. Environment Variables
-Create a `.env` file in the `backend` directory:
-
-```env
-PORT=3000
-ENCRYPTION_KEY_1=your_32_char_key_1
-ENCRYPTION_KEY_2=your_32_char_key_2
-```
-
-### 4. Run the Application
-You can run the entire platform (Backend, Frontend, and Mobile Web App) concurrently from the root directory:
-
-```bash
-# From the root directory
-npm run all
-```
-
-This command will start:
-- **Backend API**: http://localhost:3000
-- **Frontend Web**: http://localhost:5173
-- **Mobile Web App**: http://localhost:8081
-
-## 📱 Mobile App Usage
-
-The mobile application is designed to run seamlessly in the browser or on a device.
-- **Access**: Click "Web App" in the main website's navigation bar.
-- **Features**:
-    - **Hold My Spot**: Dispatch calls directly.
-    - **History**: View your call logs.
-    - **Profile**: Manage your account settings.
-    - **Guest Mode**: Try the app without creating an account immediately.
-
-## 🔒 Security Architecture
-
-Security is paramount at HoldMySpot.
-
-- **Authentication**: Secure session management and token-based authentication.
-- **Data Protection**: 
-  - **At Rest**: Sensitive data is encrypted using a double-layer AES-256-CBC algorithm. Each layer uses a distinct 256-bit key.
-  - **In Transit**: All data transmission occurs over HTTPS (in production).
-- **Privacy**: We only store what is absolutely necessary for the agent to perform its task.
+**Hold My Spot** is a sophisticated full-stack application that leverages advanced Voice AI to handle phone calls on your behalf. Built on the scalable **Raindrop** serverless platform, it integrates **ElevenLabs** for realistic voice generation and speech-to-text transcription.
 
 ---
 
-*Built with ❤️ for the AI Championship.*
+## ✨ Key Features
+
+### 🤖 AI Voice Agent
+- **Natural Speech Generation**: Uses ElevenLabs' advanced Text-to-Speech (TTS) models (`eleven_multilingual_v2`) to simulate human conversation.
+- **Dynamic Voice Selection**: Support for multiple voice personas (e.g., Male/Female options).
+- **Customizable Responses**: Generates speech dynamically based on user input.
+
+### 🎙️ Voice Generator Platform
+A dedicated workspace for testing and utilizing AI voice capabilities:
+- **Text-to-Voice (TTS)**: Input any text and generate audio instantly using selected voice profiles.
+- **Voice-to-Text (STT)**: Record audio directly from the browser/mobile and transcribe it using **ElevenLabs Scribe** (`scribe_v1` model).
+- **Playback**: Instant audio playback for generated speech.
+
+### 📱 Multi-Platform Experience
+- **Web Dashboard**: React-based interface for managing calls, viewing history, and using the Voice Generator.
+- **Mobile App**: React Native (Expo) companion app.
+    - **Floating Action Button (FAB)**: Integrated "Mic" button in the footer that seamlessly links to the web-based Voice Generator platform.
+    - **Glassmorphism UI**: Modern, sleek design with blur effects.
+
+### 🔐 Architecture & Security
+- **Secure Authentication**: Robust user registration and login system with password hashing (`bcryptjs`) and JWT-ready architecture.
+- **Call History**: Persistent tracking of all call activities stored in Raindrop KV Cache.
+- **Cloud Native**: Fully serverless architecture powered by Raindrop.
+
+---
+
+## 🛠️ Technology Stack
+
+| Component | Technology | Description |
+|-----------|------------|-------------|
+| **Backend** | [Raindrop Framework](https://github.com/liquidmetal-ai/raindrop) | Serverless Hono.js API & Workers |
+| **Frontend** | React, Vite, TailwindCSS | Modern Web Dashboard |
+| **Mobile** | React Native, Expo | iOS/Android Companion App |
+| **AI (TTS)** | ElevenLabs | Text-to-Speech Generation |
+| **AI (STT)** | ElevenLabs Scribe | High-accuracy Transcription |
+| **Database** | Raindrop KV Cache | Scalable Key-Value Store |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js**: v18 or higher
+- **npm**: v9 or higher
+- **Raindrop CLI**: Included in project dependencies
+
+### 1️⃣ Installation
+Clone the repository and install dependencies for all workspace components:
+
+```bash
+# Install root dependencies (Backend)
+npm install
+
+# Install Frontend dependencies
+cd frontend && npm install && cd ..
+
+# Install Mobile App dependencies
+cd mobile-app && npm install && cd ..
+```
+
+### 2️⃣ Configuration (Crucial)
+To enable the AI capabilities, you need to configure your secrets in the Raindrop environment.
+
+**ElevenLabs Setup:**
+> [!IMPORTANT]
+> A **Paid Subscription** (e.g., Creator/Starter) is required for ElevenLabs to work from cloud environments. Free Tier accounts will be blocked with a 401 error.
+
+Set your API key using the Raindrop CLI:
+```bash
+./node_modules/.bin/raindrop build env set ELEVENLABS_API_KEY "your-api-key-here"
+```
+
+### 3️⃣ Running the Application
+Start the entire stack (Backend + Frontend + Mobile) with a single command:
+
+```bash
+npm run dev
+```
+
+This will concurrently launch:
+*   **Backend API**: Deployed to Raindrop Sandbox.
+*   **Web Frontend**: [http://localhost:5173](http://localhost:5173)
+*   **Mobile Web Preview**: [http://localhost:8081](http://localhost:8081)
+
+> [!NOTE]
+> If you make changes to the backend code (e.g., `src/api/calls.ts`), you must **restart** the `npm run dev` process to redeploy the changes.
+
+---
+
+## 🧪 Testing & Verification
+
+### Verify Backend Health
+Check if the API is running:
+```bash
+curl https://<your-service-url>/health
+```
+
+### Test Voice Generation (API)
+You can manually test the Text-to-Speech webhook:
+
+```bash
+curl -X POST https://<your-service-url>/api/calls/webhooks/voice \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Hello, this is a test.", "voice_id": "pNInz6obpgDQGcFmaJgB"}'
+```
+
+### Test Transcription (API)
+You can upload an audio file to test Speech-to-Text:
+
+```bash
+curl -X POST https://<your-service-url>/api/calls/transcribe \
+  -F "file=@/path/to/audio.webm"
+```
+
+---
+
+## ⚠️ Troubleshooting
+
+### ElevenLabs 401 Unauthorized
+**Error:** `Unusual activity detected. Free Tier usage disabled.`
+**Cause:** ElevenLabs strict security policy blocks API requests from cloud/data-center IP addresses for Free Tier accounts.
+**Fix:** Upgrade your ElevenLabs account to a **Paid Subscription** (e.g., Creator).
+
+### "API Stuck Reading Old Text"
+**Cause:** The backend code might be stale if `npm run dev` was running while changes were made.
+**Fix:** Stop the server (Ctrl+C) and run `npm run dev` again to trigger a fresh deployment.
+
+---
+
+## 📂 Project Structure
+
+```
+raindrop-app/
+├── src/
+│   ├── api/          # Backend Logic (Hono.js)
+│   │   ├── auth.ts   # User Registration/Login
+│   │   ├── calls.ts  # Call Logic, TTS & STT Integration
+│   │   └── db.ts     # Database Helpers
+│   └── ...
+├── frontend/         # Web Application (React/Vite)
+│   ├── src/pages/    # Next-gen UI Pages (VoiceGenerator, Dashboard, etc.)
+│   └── ...
+├── mobile-app/       # Mobile Application (Expo)
+│   ├── src/components/ # Shared Mobile Components (Link to Web FAB)
+│   └── ...
+├── raindrop.manifest # Infrastructure Config
+└── package.json      # Project Scripts
+```
